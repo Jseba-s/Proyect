@@ -1,0 +1,194 @@
+body {
+    height: 100vh;
+    background-color: #ffffff;
+    background-image: url('/img/fondo.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    /* Blanco con menor opacidad */
+    z-index: -1;
+}
+
+/* Estilo principal del navbar */
+.custom-navbar {
+    background-color: #004080;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 10px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor interno */
+.custom-container {
+    max-width: 1200px;
+    margin: 0 30px;
+    padding: 10px;
+}
+
+/* Logo */
+.custom-logo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 350px;
+    height: auto;
+    margin: 0 60px;
+    transition: all 0.3s ease;
+}
+
+.custom-nav-list {
+    margin: 0 20px;
+    display: flex;
+    gap: 3rem;
+
+}
+
+
+.custom-nav-link {
+    color: #003366;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    /* Transición suave para todo */
+}
+
+.custom-nav-link:hover,
+.custom-nav-link.active {
+    color: #D22670;
+    transform: scale(1.1);
+}
+
+.custom-logo:hover {
+    transform: scale(1.1);
+}
+
+
+
+.boton-login {
+    background-color: #003366;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+    width: 80px;
+    height: 80px;
+    float: left;
+
+}
+
+.boton-login:hover {
+    background-color: #005599;
+}
+
+.icono-login {
+    font-size: 2.8rem;
+    color: white;
+}
+
+.boton-login-container {
+    margin-left: auto;
+    /* empuja al máximo a la derecha */
+}
+
+@media (max-width: 768px) {
+
+    /* Ajusta tamaño del logo para móviles */
+    .custom-logo {
+        width: 350px;
+    }
+
+    /* Reduce el tamaño de la fuente del menú */
+    .custom-nav-link {
+        font-size: 1.1rem;
+        letter-spacing: 0.5px;
+    }
+
+    /* Espaciado más compacto entre los ítems del menú */
+    .custom-nav-list {
+        display: flex;
+        flex-direction: column;
+        /* Los links uno debajo del otro */
+        align-items: center;
+        /* Centra horizontalmente */
+        justify-content: center;
+        /* Centra verticalmente si hay espacio */
+        gap: 1rem;
+        /* Espaciado entre links */
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+    /* Contenedor con menos padding */
+    .custom-container {
+        padding: 0 10px;
+    }
+
+    /* Alinea el logo más al centro si quieres */
+    .custom-navbar-brand {
+        justify-content: flex-start;
+    }
+
+    .boton-login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+
+}
+
+/*footer*/
+.custom-footer {
+    background-color: #003366;
+    padding: 20px 0;
+    border-top: 1px solid #000000;
+}
+
+.footer-logo {
+    max-height: 100px;
+}
+
+.footer-texto {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.footer-enlaces {
+    display: flex;
+    flex-direction: column; /* SIEMPRE en columna */
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.footer-link {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+}
+
+.footer-link:hover {
+    color: #D22670;
+}
+
+.footer-link i {
+    font-size: 1.2rem;
+}
+.footer-logo {
+    max-width: 150px;
+    height: auto;
+}
+
+.footer-texto {
+    color: #ffffff;
+    font-size: 0.95rem;
+}

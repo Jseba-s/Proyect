@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/dashboard}">Dashboard Biblioteca</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/dashboard}">Vista General</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard/libros}">Libros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard/ejemplares}">Ejemplares</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard/usuarios}">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard/reservas}">Reservas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard/pendientes}">Devoluciones Pendientes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid mt-1 mb-1">
+        <div class="row">
+            <div
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center p-2 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Datos Generales</h1>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card text-white bg-primary mb-4 d-flex justify-content-center align-items-center">
+                    <div class="card-body w-75">
+                        <h5 class="card-title text-center">Total de Usuarios</h5>
+                        <p class="card-text fs-2 text-center">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card text-white bg-success mb-4 d-flex justify-content-center align-items-center">
+                    <div class="card-body w-75">
+                        <h5 class="card-title text-center">Ejemplares Disponibles</h5>
+                        <p class="card-text fs-2 text-center" th:text="${ejemplaresDisponibles.size()}">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card text-white bg-warning mb-4 d-flex justify-content-center align-items-center">
+                    <div class="card-body w-75">
+                        <h5 class="card-title text-center">Devoluciones Pendientes</h5>
+                        <p class="card-text fs-2 text-center">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card text-white bg-danger mb-4 d-flex justify-content-center align-items-center">
+                    <div class="card-body w-75">
+                        <h5 class="card-title text-center">Devoluciones Atrasadas</h5>
+                        <p class="card-text fs-2 text-center">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-1 mb-1">
+        <h2>Reservas Recientes</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Cliente</th>
+                        <th>Libro</th>
+                        <th>Código_Ejemplar</th>
+                        <th>Fecha_reserva</th>
+                        <th>Devolución_proramada</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td> <!-- Índice de la fila -->
+                        <td>Nombre de cliente</td>
+                        <td>Libro</td>
+                        <td>Código del ejemplar</td>
+                        <td>Fecha de la reserva</td>
+                        <td>Fecha de devolución proramada</td>
+                        <td>Estado</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

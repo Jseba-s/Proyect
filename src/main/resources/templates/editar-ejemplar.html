@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard Ejemplares</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/dashboard}">Dashboard Biblioteca</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" th:href="@{/dashboard}">Vista General</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard/libros}">Libros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/dashboard/ejemplares}">Ejemplares</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard/usuarios}">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard/reservas}">Reservas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard/pendientes}">Devoluciones Pendientes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <h2 class="text-center mt-2 mb-1">Editar Ejemplar de "<span th:text="${ejemplar.libro.titulo}"></span>"</h2>
+        <h3 class="mt-1 mb-3">Código Actual: <span th:text="${ejemplar.codigoEjemplar}"></span></h3>
+        <div class="row d-flex justify-content-center">
+            <div class="row col-5">
+                <form th:action="@{/dashboard/ejemplares/actualizar}" method="post" th:object="${ejemplar}"
+                    id="formularioLibro">
+                    <input type="hidden" th:if="${ejemplar.id}" th:field="*{id}">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="inputLibro" class="form-label">Libro</label>
+                            <select class="form-select" th:field="*{libro}" id="inputLibro" disabled>
+                                <option th:each="libro : ${libros}" 
+                                        th:value="${libro.id}" 
+                                        th:text="${libro.titulo}" 
+                                        th:selected="${libro.id == ejemplar.libro.id}">
+                                </option>
+                            </select>
+                            <input type="hidden" name="libro" th:value="${ejemplar.libro.id}">
+                        </div>
+                        <div class="col-12">
+                            <label for="inputEstado" class="form-label">Estado del libro</label>
+                            <select class="form-select" th:field="*{estado}" id="inputEstado">
+                                <option th:each="estado : ${estados}" 
+                                        th:value="${estado}" 
+                                        th:text="${estado}" 
+                                        th:selected="${estado == ejemplar.estado}"></option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="inputCodigo" class="form-label">Código del Ejemplar</label>
+                            <input type="text" class="form-control" id="inputCodigo" placeholder="Código"
+                                th:field="*{codigoEjemplar}">
+                        </div>
+                        <div class="col-12">
+                            <label for="inputUbicacion" class="form-label">Ubicación</label>
+                            <input type="text" class="form-control" id="inputUbicacion" placeholder="Ubicacion"
+                                th:field="*{ubicacion}">
+                        </div>
+                    </div>
+                    <div class="modal-footer mt-3 d-flex justify-content-center">
+                        <a th:href="@{/dashboard/ejemplares}" class="btn btn-secondary m-1">Cerrar</a>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

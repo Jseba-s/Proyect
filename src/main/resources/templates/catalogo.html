@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Libros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/fragments.css}">
+    <link rel="stylesheet" th:href="@{/css/catalogo.css}">
+
+
+</head>
+
+<body>
+    <div th:insert="fragments :: header"></div>
+
+    <div class="container mt-5 text-center">
+        <h2 class="mb-4">Catálogo de Libros</h2>
+        <form class="d-flex justify-content-center search-bar" role="search" style="gap: 0;">
+            <div class="input-group" style="max-width: 600px;">
+                <select class="form-select" aria-label="Seleccionar categoría" style="max-width: 200px;">
+                    <option selected>Categoría</option>
+                    <option value="ficcion">Ficción</option>
+                    <option value="no-ficcion">No Ficción</option>
+                    <option value="tecnologia">Tecnología</option>
+                    <option value="educacion">Educación</option>
+                    <option value="historia">Historia</option>
+                </select>
+                <input class="form-control" type="search" placeholder="Buscar Libros..." aria-label="Buscar">
+                <button class="btn custom-search-btn" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="container my-5">
+        <h1 class="text-center mb-4"></h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            <!-- Libro 1 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm custom-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfzwWv-verlxaY4bnz8D-sIeRrQt1cv2qdvQ&s" class="card-img-top custom-card-img">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Cien años de soledad</h5>
+                        <p class="card-text">Gabriel García Márquez. Realismo mágico en Macondo.</p>
+                        <div class="mt-auto d-flex justify-content-between">
+                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#modal1">
+                                <i class="bi bi-eye-fill"></i> Ver más
+                            </button>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-calendar-check-fill"></i>
+                                Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal para "Cien años de soledad" (modal1) -->
+            <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modalLabel1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel1">Detalles de "Cien años de soledad"</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <!-- Imagen -->
+                                <div class="col-md-6">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfzwWv-verlxaY4bnz8D-sIeRrQt1cv2qdvQ&s"
+                                        class="img-fluid" alt="Cien años de soledad">
+                                </div>
+                                <!-- Detalles -->
+                                <div class="col-md-6">
+                                    <h5>Cien años de soledad</h5>
+                                    <p><strong>Autor:</strong> Gabriel García Márquez</p>
+                                    <p><strong>Descripción:</strong></p>
+                                    <p>Obra maestra del realismo mágico que narra la historia de la familia Buendía a lo
+                                        largo de siete generaciones en el mítico pueblo de Macondo. Una exploración
+                                        profunda de la soledad, el tiempo, la memoria y los ciclos de la vida.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <a href="#" class="btn btn-primary">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Libro 2 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm custom-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgABV7JJClHBTauFqHgw_Ju3wghw97cft-5Q&s" class="card-img-top custom-card-img">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">1984</h5>
+                        <p class="card-text">George Orwell. Distopía sobre un régimen totalitario.</p>
+                        <div class="mt-auto d-flex justify-content-between">
+                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#modal2">
+                                <i class="bi bi-eye-fill"></i> Ver más
+                            </button>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-calendar-check-fill"></i>
+                                Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modalLabel2" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel2">Detalles de "1984"</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <!-- Columna para la imagen, título y descripción -->
+                                <div class="col-md-6">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgABV7JJClHBTauFqHgw_Ju3wghw97cft-5Q&s" class="img-fluid"
+                                        alt="Imagen de 1984">
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>1984</h5>
+                                    <p><strong>Descripción extendida:</strong></p>
+                                    <p>George Orwell presenta una distopía sobre un régimen totalitario que controla
+                                        todos los aspectos de la vida. Una reflexión sobre la libertad y la opresión.
+                                    </p>
+                                    <p>Un relato impactante sobre la vigilancia constante y la manipulación de la
+                                        verdad.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- Botón Cerrar -->
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <!-- Botón Reservar -->
+                            <a href="#" class="btn btn-primary">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Libro 3 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm custom-card">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_695669-MLC49018025639_022022-O.webp" class="card-img-top custom-card-img">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Don Quijote de la Mancha</h5>
+                        <p class="card-text">Miguel de Cervantes. Aventuras de un caballero idealista.</p>
+                        <div class="mt-auto d-flex justify-content-between">
+                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#modal3">
+                                <i class="bi bi-eye-fill"></i> Ver más
+                            </button>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-calendar-check-fill"></i>
+                                Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--MODAL -->
+            <!-- Modal para "Don Quijote de la Mancha" -->
+            <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="modalLabel3" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel3">Detalles de "Don Quijote de la Mancha"</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <!-- Columna para la imagen, título y descripción -->
+                                <div class="col-md-6">
+                                    <img src="https://http2.mlstatic.com/D_NQ_NP_695669-MLC49018025639_022022-O.webp" class="img-fluid"
+                                        alt="Imagen de Don Quijote de la Mancha">
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Don Quijote de la Mancha</h5>
+                                    <p><strong>Descripción extendida:</strong></p>
+                                    <p>Una de las obras más importantes de la literatura española, escrita por Miguel de
+                                        Cervantes. Las aventuras de un caballero idealista en busca de justicia.</p>
+                                    <p>Un relato sobre la locura, la amistad y el honor, lleno de humor y crítica
+                                        social.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- Botón Cerrar -->
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <!-- Botón Reservar -->
+                            <a href="#" class="btn btn-primary">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Libro 4 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://assets.lectulandia.com/b/Carlos%20Ruiz%20Zafon/La%20sombra%20del%20viento%20(4664)/big.jpg" class="card-img-top custom-card-img">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">La sombra del viento</h5>
+                        <p class="card-text">Carlos Ruiz Zafón. Misterio literario en la Barcelona de la posguerra.</p>
+                        <div class="mt-auto d-flex justify-content-between">
+                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#modal4">
+                                <i class="bi bi-eye-fill"></i> Ver más
+                            </button>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-calendar-check-fill"></i>
+                                Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal para "La sombra del viento" -->
+            <div class="modal fade" id="modal4" tabindex="-1" aria-labelledby="modalLabel4" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel4">Detalles de "La sombra del viento"</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <!-- Columna para la imagen, título y descripción -->
+                                <div class="col-md-6">
+                                    <img src="https://assets.lectulandia.com/b/Carlos%20Ruiz%20Zafon/La%20sombra%20del%20viento%20(4664)/big.jpg"
+                                        class="img-fluid" alt="Imagen de La sombra del viento">
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>La sombra del viento</h5>
+                                    <p><strong>Descripción extendida:</strong></p>
+                                    <p>Carlos Ruiz Zafón nos sumerge en un misterioso universo literario en la Barcelona
+                                        de la posguerra. Un relato sobre un libro perdido y su autor.</p>
+                                    <p>Un thriller literario lleno de pasión, secretos y tragedias.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- Botón Cerrar -->
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <!-- Botón Reservar -->
+                            <a href="#" class="btn btn-primary">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Libro 5 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm custom-card">
+                    <img src="https://www.crisol.com.pe/media/catalog/product/cache/f6d2c62455a42b0d712f6c919e880845/e/l/el-principito-2_bbojckjxbvq1umcw.jpg" class="card-img-top custom-card-img">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">El principito</h5>
+                        <p class="card-text">Saint-Exupéry. Una fábula filosófica con ilustraciones.</p>
+                        <div class="mt-auto d-flex justify-content-between">
+                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#modal5">
+                                <i class="bi bi-eye-fill"></i> Ver más
+                            </button>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-calendar-check-fill"></i>
+                                Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal para "El principito" -->
+            <div class="modal fade" id="modal5" tabindex="-1" aria-labelledby="modalLabel5" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel5">Detalles de "El principito"</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <!-- Columna para la imagen, título y descripción -->
+                                <div class="col-md-6">
+                                    <img src="https://www.crisol.com.pe/media/catalog/product/cache/f6d2c62455a42b0d712f6c919e880845/e/l/el-principito-2_bbojckjxbvq1umcw.jpg" class="img-fluid"
+                                        alt="Imagen de El principito">
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>El principito</h5>
+                                    <p><strong>Descripción extendida:</strong></p>
+                                    <p>Una de las fábulas más queridas de todos los tiempos, escrita por Antoine de
+                                        Saint-Exupéry. Un niño que viaja por el universo para descubrir lecciones sobre
+                                        la vida.</p>
+                                    <p>Un relato filosófico profundo y conmovedor, lleno de ilustraciones que acompañan
+                                        su mensaje.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- Botón Cerrar -->
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <!-- Botón Reservar -->
+                            <a href="#" class="btn btn-primary">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Libro 6 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://images.cdn3.buscalibre.com/fit-in/360x360/23/e3/23e3b0699ae46fc450e85f4354328c3a.jpg" class="card-img-top custom-card-img">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Fahrenheit 451</h5>
+                        <p class="card-text">Ray Bradbury. Sociedad que prohíbe los libros.</p>
+                        <div class="mt-auto d-flex justify-content-between">
+                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#modal6">
+                                <i class="bi bi-eye-fill"></i> Ver más
+                            </button>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-calendar-check-fill"></i>
+                                Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal para "Fahrenheit 451" -->
+            <div class="modal fade" id="modal6" tabindex="-1" aria-labelledby="modalLabel6" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel6">Detalles de "Fahrenheit 451"</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <!-- Columna para la imagen, título y descripción -->
+                                <div class="col-md-6">
+                                    <img src="https://images.cdn3.buscalibre.com/fit-in/360x360/23/e3/23e3b0699ae46fc450e85f4354328c3a.jpg" class="img-fluid"
+                                        alt="Imagen de Fahrenheit 451">
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Fahrenheit 451</h5>
+                                    <p><strong>Descripción extendida:</strong></p>
+                                    <p>Ray Bradbury nos presenta una sociedad donde los libros están prohibidos y
+                                        quemados. Un futuro distópico donde el pensamiento libre es castigado.</p>
+                                    <p>Un reflejo sobre la censura y el control social, que sigue siendo relevante hoy
+                                        en día.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- Botón Cerrar -->
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <!-- Botón Reservar -->
+                            <a href="#" class="btn btn-primary">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal para "Orgullo y prejuicio" -->
+            <div class="modal fade" id="modal7" tabindex="-1" aria-labelledby="modalLabel7" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel7">Detalles de "Orgullo y prejuicio"</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <!-- Columna para la imagen, título y descripción -->
+                                <div class="col-md-6">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT999XjbPK0N8Q8LG9casJniWxirSmD_dpsBg&s"
+                                        class="img-fluid" alt="Imagen de Orgullo y prejuicio">
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Orgullo y prejuicio</h5>
+                                    <p><strong>Descripción extendida:</strong></p>
+                                    <p>Jane Austen nos presenta una historia sobre el amor y la sociedad, centrada en la
+                                        relación entre Elizabeth Bennet y Mr. Darcy.</p>
+                                    <p>Una novela sobre la moralidad, la vanidad y los prejuicios sociales.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- Botón Cerrar -->
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <!-- Botón Reservar -->
+                            <a href="#" class="btn btn-primary">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Libro 7 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT999XjbPK0N8Q8LG9casJniWxirSmD_dpsBg&s" class="card-img-top custom-card-img">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Orgullo y prejuicio</h5>
+                        <p class="card-text">Jane Austen. Romance y crítica social en la Inglaterra del siglo XIX.</p>
+                        <div class="mt-auto d-flex justify-content-between">
+                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#modal7">
+                                <i class="bi bi-eye-fill"></i> Ver más
+                            </button>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-calendar-check-fill"></i>
+                                Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Libro 8 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://www.crisol.com.pe/media/catalog/product/cache/cf84e6047db2ba7f2d5c381080c69ffe/9/7/9788417216948.jpg" class="card-img-top custom-card-img">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Matar a un ruiseñor</h5>
+                        <p class="card-text">Harper Lee. Injusticia racial en el sur de EE. UU.</p>
+                        <div class="mt-auto d-flex justify-content-between">
+                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#modal8">
+                                <i class="bi bi-eye-fill"></i> Ver más
+                            </button>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-calendar-check-fill"></i>
+                                Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal para "Matar a un ruiseñor" (modal8) -->
+            <div class="modal fade" id="modal8" tabindex="-1" aria-labelledby="modalLabel8" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel8">Detalles de "Matar a un ruiseñor"</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <!-- Imagen -->
+                                <div class="col-md-6">
+                                    <img src="https://www.crisol.com.pe/media/catalog/product/cache/cf84e6047db2ba7f2d5c381080c69ffe/9/7/9788417216948.jpg"
+                                        class="img-fluid" alt="Matar a un ruiseñor">
+                                </div>
+                                <!-- Detalles -->
+                                <div class="col-md-6">
+                                    <h5>Matar a un ruiseñor</h5>
+                                    <p><strong>Autor:</strong> Harper Lee</p>
+                                    <p><strong>Descripción:</strong></p>
+                                    <p>Una novela clásica sobre la injusticia racial en el sur de Estados Unidos,
+                                        contada desde la perspectiva de Scout Finch, una niña que presencia el juicio de
+                                        un hombre negro acusado injustamente. Un retrato conmovedor de la moral, la
+                                        inocencia y la lucha contra el racismo.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <a href="#" class="btn btn-primary">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Libro 9 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://images.cdn3.buscalibre.com/fit-in/360x360/a7/90/a790dff70defe5c61b66fd73716b6e30.jpg" class="card-img-top custom-card-img">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">El nombre del viento</h5>
+                        <p class="card-text">Patrick Rothfuss. La historia de un mago legendario.</p>
+                        <div class="mt-auto d-flex justify-content-between">
+                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#modal9">
+                                <i class="bi bi-eye-fill"></i> Ver más
+                            </button>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-calendar-check-fill"></i>
+                                Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal para "El nombre del viento" (modal9) -->
+            <div class="modal fade" id="modal9" tabindex="-1" aria-labelledby="modalLabel9" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel9">Detalles de "El nombre del viento"</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <!-- Imagen -->
+                                <div class="col-md-6">
+                                    <img src="https://images.cdn3.buscalibre.com/fit-in/360x360/a7/90/a790dff70defe5c61b66fd73716b6e30.jpg"
+                                        class="img-fluid" alt="El nombre del viento">
+                                </div>
+                                <!-- Detalles -->
+                                <div class="col-md-6">
+                                    <h5>El nombre del viento</h5>
+                                    <p><strong>Autor:</strong> Patrick Rothfuss</p>
+                                    <p><strong>Descripción:</strong></p>
+                                    <p>La fascinante historia de Kvothe, un joven con un talento extraordinario para la
+                                        magia y la música. Desde su trágica infancia hasta su ingreso a la Universidad,
+                                        esta novela narra la vida de un hombre destinado a convertirse en leyenda.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <a href="#" class="btn btn-primary">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- Fin de fila -->
+
+
+    </div>
+    <div th:insert="fragments :: footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

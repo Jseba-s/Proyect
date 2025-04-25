@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard Libros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/dashboard}">Dashboard Biblioteca</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" th:href="@{/dashboard}">Vista General</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/dashboard/libros}">Libros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard/ejemplares}">Ejemplares</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard/usuarios}">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard/reservas}">Reservas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard/pendientes}">Devoluciones Pendientes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <h2>Lista de Libros</h2>
+            <!-- Formulario de Búsqueda -->
+            <form th:action="@{/}" method="GET" class="mb-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="nombreLibro"
+                        placeholder="Ingrese el nombre del libro">
+                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                </div>
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th class="text-center">Título</th>
+                            <th class="text-center">Autor</th>
+                            <th class="text-center">ISBN</th>
+                            <th class="text-center">Editorial</th>
+                            <th class="text-center">Género</th>
+                            <th class="text-center">Año de Publicación</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="libro,iterStat : ${libros}">
+                            <td class="text-center" th:text="${iterStat.index+1}">1</td>
+                            <td class="text-center" th:text="${libro.titulo}">Título del libro</td>
+                            <td class="text-center" th:text="${libro.autor}">Juan Pérez</td>
+                            <td class="text-center" th:text="${libro.isbn}">978-84-7245-643-3</td>
+                            <td class="text-center" th:text="${libro.editorial}">Editorial</td>
+                            <td class="text-center" th:text="${libro.genero}">Género</td>
+                            <td class="text-center" th:text="${libro.fechaPublicacion}">Año</td>
+                            <td class="d-flex justify-content-evenly">
+                                <a th:href="@{/dashboard/libros/editar/{id}(id=${libro.id})}"
+                                    class="btn btn-primary btn-sm">Editar</a>
+                                <a th:href="@{/dashboard/libros/eliminar/{id}(id=${libro.id})}"
+                                    class="btn btn-danger btn-sm"
+                                    onclick="return confirm('¿Está seguro de que desea eliminar este libro?');">Eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-2">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarLibro">
+                    Agregar Libro
+                </button>
+                <div class="modal fade" id="agregarLibro" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel"
+                                    th:text="${modoEdicion}?'Editar Libro':'Agregar Libro'">Agregar Libro</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="errorMessages" class="alert alert-danger d-none"></div>
+                                <!-- Formulario para Agregar Libro -->
+                                <form th:action="@{/dashboard/libros/guardar}" method="post" th:object="${libro}"
+                                    id="formularioLibro">
+                                    <input type="hidden" th:if="${libro.id}" th:field="*{id}">
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label for="inputTitulo" class="form-label">Título del libro</label>
+                                            <input type="text" class="form-control" id="inputTitulo"
+                                                placeholder="Título" th:field="*{titulo}">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="inputAutor" class="form-label">Nombre del Autor</label>
+                                            <input type="text" class="form-control" id="inputAutor" placeholder="Autor"
+                                                th:field="*{autor}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="inputIsbn" class="form-label">Número de ISBN</label>
+                                            <input type="text" class="form-control" id="inputIsbn" placeholder="ISBN"
+                                                th:field="*{isbn}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="inputEditorial" class="form-label">Nombre de Editorial</label>
+                                            <input type="text" class="form-control" id="inputEditorial"
+                                                placeholder="Editorial" th:field="*{editorial}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="inputGenero" class="form-label">Género Literario</label>
+                                            <input type="text" class="form-control" id="inputGenero"
+                                                placeholder="Género" th:field="*{genero}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="inputFechaPublicacion" class="form-label">Fecha de
+                                                Publicación</label>
+                                            <input type="date" class="form-control" id="inputFechaPublicacion"
+                                                placeholder="Fecha" th:field="*{fechaPublicacion}">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
